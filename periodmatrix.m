@@ -515,6 +515,9 @@ procedure PeriodMatrix(X)
 
         /* Get big period matrix in \C^(g x 2g) */
         X`BigPeriodMatrix := Transpose(RowSubmatrixRange(PMAPMB,1,2*g));
+        if X`Genus eq 3 and Degree(X`DefiningPolynomial) eq 4 then
+            X`BigPeriodMatrix := Matrix(BaseRing(X`BigPeriodMatrix), [[0,0,1],[0,1,0],[1,0,0]])*X`BigPeriodMatrix;
+        end if;
 
         /* Remove infinite chain and add chains around non-branch points */
         if InfPerm ne Id then

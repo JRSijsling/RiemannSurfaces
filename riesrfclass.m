@@ -201,15 +201,21 @@ intrinsic RiemannSurface( f::RngMPolElt, sigma::PlcNumElt : Precision := 30, Int
         X`Genus := #X`DFF;
         mg := X`Degree[1] * X`Genus;
 
+        /*
         if X`Genus eq 3 and Degree(f) eq 4 then
             b1, b2, b3 := Explode(X`DFF);
             KU := X`FunctionField;
-            X`DFF := [ (KU.1)*b3, (KU.2)*b3, b3 ];
-            b1, b2, b3 := Explode(X`DFF);
+            DFF_standard := [ (KU.1)*b3, (KU.2)*b3, b3 ];
+
+            assert Denominator(RationalFunction(b1/b3)) eq 1;
+            assert Denominator(RationalFunction(b2/b3)) eq 1;
+            num1 := Numerator(RationalFunction(b1/b3));
+            num2 := Numerator(RationalFunction(b2/b3));
+
+            b1, b2, b3 := Explode(DFF_standard);
             assert b1/b3 eq KU.1;
             assert b2/b3 eq KU.2;
 
-            /*
             vprint RS,1 : b3;
             R := Parent(f);
             fx := Derivative(f, 1);
@@ -230,9 +236,8 @@ intrinsic RiemannSurface( f::RngMPolElt, sigma::PlcNumElt : Precision := 30, Int
             b1 := (KU.1)*b3;
             b2 := (KU.2)*b3;
             X`DFF := [ b1, b2, b3 ];
-            */
         end if;
-        //print X`DFF;
+        */
 
         /* Throw in some extra precision */
         CompPrec := X`Prec + X`Degree[1] + 3;
