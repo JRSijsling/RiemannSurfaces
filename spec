@@ -11,4 +11,5 @@
 	paths.m
 	infinitepoints.m
 	testfunctions.m
+	evaluate.m
 }
