@@ -204,28 +204,28 @@ intrinsic Print(Pt::RieSrfPt:Precision:=10)
         C<I> := ComplexField(Precision);
         if Pt`IsFinite then
                 if assigned Pt`y and Type(Pt`y) eq FldComElt then
-                        vprintf RS,1 : "(" cat Sprint(C!Pt`x) cat ", " cat Sprint(C!Pt`y) cat ")";
+                        print "(" cat Sprint(C!Pt`x) cat ", " cat Sprint(C!Pt`y) cat ")";
                 else
-                        vprintf RS,1 : "(" cat Sprint(C!Pt`x) cat ", " cat Sprint(Pt`Sheets) cat ")";
+                        print "(" cat Sprint(C!Pt`x) cat ", " cat Sprint(Pt`Sheets) cat ")";
                 end if;
         else
                 if Pt`RieSrf`IsSuperelliptic then
                         if Pt`Index eq 1 then
-                                vprintf RS,1 : "1st point at infinity";
+                                print "1st point at infinity";
                         elif Pt`Index eq 2 then
-                                vprintf RS,1 : "2nd point at infinity";
+                                print "2nd point at infinity";
                         elif Pt`Index eq 3 then
-                                vprintf RS,1 : "3rd point at infinity";
+                                print "3rd point at infinity";
                         else
-                                vprintf RS,1 : Sprint(Pt`Index) cat "th point at infinity";
+                                print Sprint(Pt`Index) cat "th point at infinity";
                         end if;
                 else
                         if Pt`x cmpeq Infinity() and assigned Pt`Sheets then
-                                vprintf RS,1 : "Point at infinity on sheets " cat Sprint(Pt`Sheets);
+                                print "Point at infinity on sheets " cat Sprint(Pt`Sheets);
                         elif Type(Pt`x) eq FldComElt and not assigned Pt`y then
-                                vprintf RS,1 : "Point over x = " cat Sprint(C!Pt`x) cat " on sheets " cat Sprint(Pt`Sheets);
+                                print "Point over x = " cat Sprint(C!Pt`x) cat " on sheets " cat Sprint(Pt`Sheets);
                         elif Type(Pt`x) eq FldComElt and Pt`y cmpeq Infinity() then
-                                vprintf RS,1 : "Y-infinite point over x = " cat Sprint(C!Pt`x) cat " on sheets " cat Sprint(Pt`Sheets);
+                                print "Y-infinite point over x = " cat Sprint(C!Pt`x) cat " on sheets " cat Sprint(Pt`Sheets);
                         else
                                 error Error("Error in vprint RS,1 :.");
                         end if;
