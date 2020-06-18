@@ -1535,7 +1535,7 @@ function GJ_Integral(Edge,X:AJM:=false)
         else
                 nm := X`Degree[2]-2;
         end if;
-print "GJINt:",GJInts;
+        vprint RS,2 : "GJINt:",GJInts;
         /* Evaluate differentials at abisccsas */
         for t in [1..N] do
                 ct := 1;
